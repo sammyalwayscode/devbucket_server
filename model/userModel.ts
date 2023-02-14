@@ -12,59 +12,70 @@ interface User {
   favourite: {}[];
   followers: {}[];
   following: {}[];
+  OTP: string;
+  mainOTP: string;
 }
 
 interface iUser extends User, mongoose.ObjectId {}
 
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-  },
-  email: {
-    type: String,
-    unique: true,
-  },
-  password: {
-    type: String,
-  },
-  avatar: {
-    type: String,
-  },
-  avatarID: {
-    type: String,
-  },
-  projects: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "projects",
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
     },
-  ],
-  verifiedToken: {
-    type: String,
-  },
-  verified: {
-    type: Boolean,
-  },
-  favourite: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "favourite",
+    email: {
+      type: String,
+      unique: true,
     },
-  ],
-  followers: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "followers",
+    password: {
+      type: String,
     },
-  ],
+    avatar: {
+      type: String,
+    },
+    avatarID: {
+      type: String,
+    },
+    projects: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "projects",
+      },
+    ],
+    verifiedToken: {
+      type: String,
+    },
+    verified: {
+      type: Boolean,
+    },
+    favourite: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "favourite",
+      },
+    ],
+    followers: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "followers",
+      },
+    ],
 
-  following: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "following",
+    following: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "following",
+      },
+    ],
+    OTP: {
+      type: String,
     },
-  ],
-});
+    mainOTP: {
+      type: String,
+    },
+  },
+  { timestamps: true }
+);
 
-const userModel = mongoose.model<iUser>("projects", userSchema);
+const userModel = mongoose.model<iUser>("users", userSchema);
 export default userModel;
