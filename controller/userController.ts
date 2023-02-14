@@ -69,6 +69,12 @@ export const signUpUser = async (
         _id: user._id,
       });
     }
+
+    //Verify email here
+
+    return res.status(201).json({
+      message: "Mail Sent..., Go to your inbox to continue",
+    });
   } catch (error) {
     return res.status(400).json({
       message: "An Error Occoured Signing Up User",
