@@ -3,10 +3,12 @@ import nodemailer from "nodemailer";
 import ejs from "ejs";
 import path from "path";
 
-const GOOGLE_SECRETE = "";
-const GOOGLE_ID = "";
-const GOOGLE_REFRESHTOKEN = "";
-const GOOGLE_REDIRECT = "";
+const GOOGLE_SECRETE = "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";
+const GOOGLE_ID =
+  "322842298627-s9q9h9ddt0kisfdbf5c3rnjl8k1o9443.apps.googleusercontent.com";
+const GOOGLE_REFRESHTOKEN =
+  "1//04oLPmRx0OmtrCgYIARAAGAQSNwF-L9IrBbKjGr-HxqZUsLmOkdGXn22-sxoKWqWlFDlqq1GIq5dYeWi2X2vTh8TQRy6iaLarcfw";
+const GOOGLE_REDIRECT = "https://developers.google.com/oauthplayground";
 
 const oAuth = new google.auth.OAuth2(
   GOOGLE_ID,
@@ -15,7 +17,7 @@ const oAuth = new google.auth.OAuth2(
 );
 oAuth.setCredentials({ refresh_token: GOOGLE_REFRESHTOKEN });
 
-export const signUpEmail = async () => {
+export const signUpEmail = async (newUser: any) => {
   try {
     const accessToken = await oAuth.getAccessToken();
     const transporter = nodemailer.createTransport({
@@ -34,9 +36,9 @@ export const signUpEmail = async () => {
     const data = await ejs.renderFile(buildFiles, { name: name });
 
     const mailOptions = {
-      from: "",
-      to: "",
-      subject: "",
+      from: "Dev Bucket 🧑‍💻🧑‍💻🧑‍💻<olorundasamuel4@gmail.com>",
+      to: newUser.email,
+      subject: "Account Verification",
       html: data,
     };
 
