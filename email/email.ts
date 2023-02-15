@@ -1,5 +1,5 @@
 import { google } from "googleapis";
-import nodemailer from "nodemailer";
+import * as nodemailer from "nodemailer";
 import ejs from "ejs";
 import path from "path";
 
@@ -24,16 +24,16 @@ export const signUpEmail = async (newUser: any) => {
       service: "gmail",
       auth: {
         type: "OAuth2",
-        user: "olorundasamuel2@gmail.com",
-        refreshToken: accessToken.token,
-        clientID: GOOGLE_ID,
+        user: "olorundasamuel4@gmail.com",
+        refreshToken: accessToken.token || "",
+        clientId: GOOGLE_ID,
         clientSecret: GOOGLE_SECRETE,
         accessToken: GOOGLE_REFRESHTOKEN,
       },
     });
 
     const buildFiles = path.join(__dirname, "../views/mail.ejs");
-    const data = await ejs.renderFile(buildFiles, { name: name });
+    const data = await ejs.renderFile(buildFiles, { name: newUser.name });
 
     const mailOptions = {
       from: "Dev Bucket 🧑‍💻🧑‍💻🧑‍💻<olorundasamuel4@gmail.com>",

@@ -6,7 +6,6 @@ import otpGenerator from "otp-generator";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
 import { signUpEmail } from "../email/email";
-import { networksecurity } from "googleapis/build/src/apis/networksecurity";
 
 export const getUsers = async (
   req: Request,
@@ -37,7 +36,7 @@ export const signUpUser = async (
     //A Simple flow of if User Exist trow a message of User already Exist and if not go ahead to register user
     const olduser = await userModel.findOne({ email });
     if (olduser) {
-      res.status(400).json({
+      return res.status(400).json({
         message: "User Already Exist",
       });
     } else {
