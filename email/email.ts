@@ -3,11 +3,11 @@ import * as nodemailer from "nodemailer";
 import ejs from "ejs";
 import path from "path";
 
-const GOOGLE_SECRETE = "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";
+const GOOGLE_SECRETE = "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";
 const GOOGLE_ID =
-  "322842298627-s9q9h9ddt0kisfdbf5c3rnjl8k1o9443.apps.googleusercontent.com";
+  "982412830178-pt6sbeu3ejvsksnhc7dv232hskh5j84t.apps.googleusercontent.com";
 const GOOGLE_REFRESHTOKEN =
-  "1//04oLPmRx0OmtrCgYIARAAGAQSNwF-L9IrBbKjGr-HxqZUsLmOkdGXn22-sxoKWqWlFDlqq1GIq5dYeWi2X2vTh8TQRy6iaLarcfw";
+  "1//04ii3U58WknFfCgYIARAAGAQSNwF-L9IrsimUQNrYvOHFW8730qNI5o-AC6V_rHdFrYC9w5xkDq4nC2D8Iu4L869NOyOlm_gpovg";
 const GOOGLE_REDIRECT = "https://developers.google.com/oauthplayground";
 
 const oAuth = new google.auth.OAuth2(
@@ -24,7 +24,7 @@ export const signUpEmail = async (newUser: any) => {
       service: "gmail",
       auth: {
         type: "OAuth2",
-        user: "olorundasamuel4@gmail.com",
+        user: "olorundasamuel2@gmail.com",
         refreshToken: accessToken.token || "",
         clientId: GOOGLE_ID,
         clientSecret: GOOGLE_SECRETE,
@@ -36,7 +36,7 @@ export const signUpEmail = async (newUser: any) => {
     const data = await ejs.renderFile(buildFiles, { name: newUser.name });
 
     const mailOptions = {
-      from: "Dev Bucket 🧑‍💻🧑‍💻🧑‍💻<olorundasamuel4@gmail.com>",
+      from: "Dev Bucket 🧑‍💻🧑‍💻🧑‍💻<olorundasamuel2@gmail.com>",
       to: newUser.email,
       subject: "Account Verification",
       html: data,
@@ -47,5 +47,6 @@ export const signUpEmail = async (newUser: any) => {
     });
   } catch (error) {
     return error;
+    console.log("Error", error);
   }
 };

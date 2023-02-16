@@ -30,7 +30,7 @@ export const signUpUser = async (
   res: Response
 ): Promise<Response> => {
   try {
-    const { name, email, password, verified } = req.body;
+    const { name, email, password } = req.body;
 
     //Checking to see if User Exist Before
     //A Simple flow of if User Exist trow a message of User already Exist and if not go ahead to register user
@@ -72,8 +72,8 @@ export const signUpUser = async (
 
       //Verify email here
       signUpEmail(newUser)
-        .then((result) => {
-          console.log(`Message Has Been Sent to you: ${result}`);
+        .then((res) => {
+          console.log("Mail Sent 📧📧📧", res);
         })
         .catch((error) => {
           console.log(error);
