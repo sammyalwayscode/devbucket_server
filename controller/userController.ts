@@ -73,7 +73,7 @@ export const signUpUser = async (
       //Verify email here
       signUpEmail(newUser)
         .then((res) => {
-          console.log("Mail Sent 📧📧📧", res);
+          console.log(`Mail Sent... 📧📧📧 ${res}`);
         })
         .catch((error) => {
           console.log(error);
