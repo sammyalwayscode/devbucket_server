@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import otpGenerator from "otp-generator";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
-import { signUpEmail } from "../email/email";
+import { signUpEmail } from "../email/mailer";
 
 export const getUsers = async (
   req: Request,
@@ -20,6 +20,24 @@ export const getUsers = async (
   } catch (error) {
     return res.status(400).json({
       message: "Failed to get all users",
+      data: error,
+    });
+  }
+};
+
+export const getOneUser = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  try {
+    const oneUser = await userModel.findById(req.params.id);
+    return res.status(200).json({
+      message: "Data Found...",
+      data: oneUser,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: "Failed to get user",
       data: error,
     });
   }
