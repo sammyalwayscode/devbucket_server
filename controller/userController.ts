@@ -67,7 +67,7 @@ export const signUpUser = async (
         lowerCaseAlphabets: false,
         specialChars: false,
       });
-      const jwtScrete = "fw36r7890d7wygg3is76w";
+      const jwtScrete = "fw36r7890d7wygg3is76wh5t9oiuy";
       const tokenValue = crypto.randomBytes(23).toString("hex");
       const myToken = jwt.sign({ tokenValue }, jwtScrete, {
         expiresIn: "30min",
