@@ -16,7 +16,9 @@ interface User {
   mainOTP: string;
 }
 
-interface iUser extends User, mongoose.ObjectId {}
+interface iUser extends User, mongoose.ObjectId {
+  _doc: any;
+}
 
 const userSchema = new mongoose.Schema(
   {
@@ -26,9 +28,13 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       unique: true,
+      lowerCase: true,
+      trim: true,
+      required: [true, "Please Enter Your Email"],
     },
     password: {
       type: String,
+      required: [true, "Please Enter Your Password"],
     },
     avatar: {
       type: String,
