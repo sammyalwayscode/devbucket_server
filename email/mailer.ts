@@ -36,7 +36,7 @@ export const signUpEmail = async (newUser: any) => {
       from: "Verify your DevBucket Account 🧑‍💻🧑‍💻🧑‍💻 <olorundasamuel2@gmail.com>",
       to: newUser.email,
       subject: "Account Verification",
-      html: "data",
+      html: data,
     };
 
     mailTransporter.sendMail(mailOption);
