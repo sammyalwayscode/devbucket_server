@@ -160,19 +160,34 @@ export const updateUserAvatar = async (
   try {
     const currentUser = await userModel.findById(req.params.id);
     if (currentUser) {
-      await cloudinary.uploader.destroy(currentUser?.avatarID!);
-      const cloudImage = await cloudinary.uploader.upload(req?.file!.path);
+      if (currentUser.avatar) {
+        await cloudinary.uploader.destroy(currentUser?.avatarID!);
+        const cloudImage = await cloudinary.uploader.upload(req?.file!.path);
 
-      const updateAvatar = await userModel.findByIdAndUpdate(
-        req.params.id,
-        { avatar: cloudImage.secure_url, avatarID: cloudImage.public_id },
-        { new: true }
-      );
+        const updateAvatar = await userModel.findByIdAndUpdate(
+          req.params.id,
+          { avatar: cloudImage.secure_url!, avatarID: cloudImage.public_id! },
+          { new: true }
+        );
 
-      return res.status(200).json({
-        message: "Avatar Updated...",
-        data: updateAvatar,
-      });
+        return res.status(200).json({
+          message: "Avatar Updated...",
+          data: updateAvatar,
+        });
+      } else {
+        const cloudImage = await cloudinary.uploader.upload(req?.file!.path);
+
+        const updateAvatar = await userModel.findByIdAndUpdate(
+          req.params.id,
+          { avatar: cloudImage.secure_url!, avatarID: cloudImage.public_id! },
+          { new: true }
+        );
+
+        return res.status(200).json({
+          message: "Avatar Updated...",
+          data: updateAvatar,
+        });
+      }
     } else {
       return res.status(400).json({
         message: "Can't Preform Update",
