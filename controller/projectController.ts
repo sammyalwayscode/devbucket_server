@@ -60,3 +60,69 @@ export const getAllUserProject = async (
     });
   }
 };
+
+// export const getOneUsersProject =async (req:Request, res: Response):Promise<Response> => {
+//     try {
+
+//     } catch (error) {
+//         return res.status(400).json({
+//             message: "An Error Occoured Getting This Particular User",
+//             data: error
+//         })
+//     }
+// }
+
+// export const updateProject = async (
+//   req: Request,
+//   res: Response
+// ): Promise<Response> => {
+//   try {
+//     const { projectTitle, projectName, projectDetails, gitHubURI, liveURI } =
+//       req.body;
+//     const check = await projectModel.findById(req.params.id);
+//     const cloudImage = await cloudinary.uploader.upload(req?.file!.path);
+
+//     if (check) {
+//       await cloudinary.uploader.destroy(check.projectImageID);
+//       const updateProject = await projectModel.findByIdAndUpdate(
+//         req.params.updateID,
+//         {
+//           projectTitle,
+//           projectName,
+//           projectDetails,
+//           gitHubURI,
+//           liveURI,
+//           projectImage: cloudImage.secure_url,
+//           projectImageID: cloudImage.public_id,
+//         },
+//         { new: true }
+//       );
+
+//       return res.status(201).json({
+//         message: "Project Updated",
+//         data: updateProject,
+//       });
+//     } else {
+//       return res.status(400).json({
+//         message: "Can't Perform Update",
+//       });
+//     }
+//   } catch (error) {
+//     console.log(error);
+//     return res.status(400).json({
+//       message: "An Error Occoured Updating The Data",
+//       data: error,
+//     });
+//   }
+// };
+
+// export const deleteProject =async (req:Request, res: Response):Promise<Response> => {
+//     try {
+
+//     } catch (error) {
+//         return res.status(400).json({
+//             message: "An Error Occoured Deleting Project",
+//             data: error
+//         })
+//     }
+// }
