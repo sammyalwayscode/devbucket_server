@@ -16,7 +16,7 @@ interface User {
   mainOTP: string;
 }
 
-interface iUser extends User, mongoose.ObjectId {
+interface iUser extends User, mongoose.Document {
   _doc: any;
 }
 

@@ -1,6 +1,9 @@
 import { Request, Response } from "express";
+import mongoose from "mongoose";
+import favouriteModule from "../model/favouriteModel";
 import likeModel from "../model/likeModel";
 import projectModel from "../model/projectModel";
+import userModel from "../model/userModel";
 
 export const likeProject = async (
   req: Request,
@@ -14,6 +17,15 @@ export const likeProject = async (
       },
       { new: true }
     );
+
+    // const getUser = await userModel.findById(req.params.id);
+    // const newFavourite = await favouriteModule.create({
+    //   favUserName: getUser?.name,
+    //   favProject: getUser?.projects,
+    // });
+
+    // getUser?.favourite.push(new mongoose.Types.ObjectId(newFavourite._id));
+    // getUser?.save();
 
     return res.status(200).json({
       message: "Project Liked 👍👍👍",

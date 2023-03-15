@@ -4,6 +4,7 @@ import userRouter from "./router/userRouter";
 import projectRouter from "./router/projectRouter";
 import likeRouter from "./router/likeRouter";
 import commentRouter from "./router/commentRouter";
+import followRouter from "./router/followRouter";
 const PORT: number = 2001;
 const app: Application = express();
 require("./config/db");
@@ -24,6 +25,7 @@ app.use("/api", userRouter);
 app.use("/api", projectRouter);
 app.use("/api", likeRouter);
 app.use("/api", commentRouter);
+app.use("/api", followRouter);
 
 app.listen(PORT, () => {
   console.log(`Listening to PORT: ${PORT}`);

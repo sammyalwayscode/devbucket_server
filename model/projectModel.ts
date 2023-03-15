@@ -13,7 +13,7 @@ interface Projects {
   liveURI: string;
 }
 
-interface iProjects extends Projects, mongoose.ObjectId {}
+interface iProjects extends Projects, mongoose.Document {}
 
 const projectSchema = new mongoose.Schema(
   {
