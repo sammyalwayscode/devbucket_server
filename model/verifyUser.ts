@@ -5,7 +5,7 @@ interface verifyUser {
   userID: {};
 }
 
-interface iVerify extends verifyUser, mongoose.ObjectId {}
+interface iVerify extends verifyUser, mongoose.Document {}
 
 const verifySchema = new mongoose.Schema({
   token: {

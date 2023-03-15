@@ -6,7 +6,7 @@ interface Comments {
   userComment: string;
 }
 
-interface iComments extends Comments, mongoose.ObjectId {}
+interface iComments extends Comments, mongoose.Document {}
 
 const commentSchema = new mongoose.Schema(
   {
