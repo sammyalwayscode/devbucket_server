@@ -200,3 +200,21 @@ export const updateUserAvatar = async (
     });
   }
 };
+
+// export const removeUser = async (
+//   req: Request,
+//   res: Response
+// ): Promise<Response> => {
+//   try {
+//     const deleteUser = await userModel.findByIdAndDelete(req.params.userID);
+//     return res.status(200).json({
+//       message: "User Deleted All Sucessfully",
+//       data: deleteUser,
+//     });
+//   } catch (error) {
+//     return res.status(400).json({
+//       message: "An Error Occoured Deleting This User",
+//       data: error,
+//     });
+//   }
+// };

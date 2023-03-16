@@ -17,7 +17,6 @@ export const likeProject = async (
       },
       { new: true }
     );
-
     // const getUser = await userModel.findById(req.params.id);
     // const newFavourite = await favouriteModule.create({
     //   favUserName: getUser?.name,

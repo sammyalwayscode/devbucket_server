@@ -61,16 +61,23 @@ export const getAllUserProject = async (
   }
 };
 
-// export const getOneUsersProject =async (req:Request, res: Response):Promise<Response> => {
-//     try {
-
-//     } catch (error) {
-//         return res.status(400).json({
-//             message: "An Error Occoured Getting This Particular User",
-//             data: error
-//         })
-//     }
-// }
+export const getOneUsersProject = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  try {
+    const getOne = await projectModel.findById(req.params.projectID);
+    return res.status(200).json({
+      message: "Project Found",
+      data: getOne,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: "An Error Occoured Getting This Particular User",
+      data: error,
+    });
+  }
+};
 
 // export const updateProject = async (
 //   req: Request,
@@ -118,6 +125,15 @@ export const getAllUserProject = async (
 
 // export const deleteProject =async (req:Request, res: Response):Promise<Response> => {
 //     try {
+//       const getUser = await userModel.findById(req.params.userID)
+//       const removeProject = await projectModel.findByIdAndRemove(req.params.projectID)
+
+//       getUser!.projects.pull(removeProject)
+//       getUser?.save()
+
+//       return res.status(200).json({
+//         message: "Project Delected ❌❌❌"
+//       })
 
 //     } catch (error) {
 //         return res.status(400).json({
