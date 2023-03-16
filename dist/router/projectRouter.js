@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const multer_1 = require("../config/multer");
+const projectController_1 = require("../controller/projectController");
+const router = (0, express_1.Router)();
+router.route("/:userId/newProject").post(multer_1.projectImageUpload, projectController_1.createNewProject);
+router.route("/:id/usersProject").get(projectController_1.getAllUserProject);
+// router.route("/:updateID").patch(projectImageUpload, updateProject);
+router.route("/:projectID").get(projectController_1.getOneUsersProject);
+exports.default = router;
