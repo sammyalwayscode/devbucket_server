@@ -14,7 +14,7 @@ app.set("view engine", "ejs");
 app.use(express.json());
 
 app.get("/", (req: Request, res: Response): Response => {
-  return res.status(200).json({ message: "Server Up 🚀🚀🚀" });
+  return res.status(200).json({ message: "Server Up and running 🚀🚀🚀" });
 });
 
 app.get("/viewEmail", (req: Request, res: Response) => {
