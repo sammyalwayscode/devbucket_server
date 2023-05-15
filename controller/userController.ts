@@ -104,6 +104,7 @@ export const signUpUser = async (
       });
     }
   } catch (error) {
+    console.log("Sign Up Error", error);
     return res.status(400).json({
       message: "An Error Occoured Signing Up User",
       data: error,

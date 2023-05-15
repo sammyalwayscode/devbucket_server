@@ -142,3 +142,21 @@ export const getOneUsersProject = async (
 //         })
 //     }
 // }
+
+export const getAllProject = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  try {
+    const allProject = await projectModel.find();
+    return res.status(200).json({
+      message: "All Projects...",
+      data: allProject,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: "An Error Occoured Getting Users",
+      data: error,
+    });
+  }
+};
