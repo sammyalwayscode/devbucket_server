@@ -4,6 +4,6 @@ import { postComment, viewComments } from "../controller/commentsController";
 const router = Router();
 
 router.route("/:id/:projectID/comments").post(postComment);
-router.route("/:id/:projectID/projectComments").get(viewComments);
+router.route("/comments/:projectID/projectComments").get(viewComments);
 
 export default router;
